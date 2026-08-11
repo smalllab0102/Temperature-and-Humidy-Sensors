@@ -5,7 +5,7 @@ from datetime import datetime
 from pymodbus.client import ModbusTcpClient
 
 # --- CONFIGURATION ---
-SERVER_IP = "192.168.2.3"  
+SERVER_IP = "192.168.2.4"  
 SERVER_PORT = 502
 UNIT_ID = 1
 LOG_FILE = "modbus_log.csv"
