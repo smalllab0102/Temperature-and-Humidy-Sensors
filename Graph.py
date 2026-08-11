@@ -19,6 +19,8 @@ def update(frame):
     graph.set_ydata(y)
     ax.relim()
     ax.autoscale_view()
+    fig.canvas.draw_idle()
+    return graph,
 
 anim = FuncAnimation(fig, update, interval=1000)
 plt.show()
