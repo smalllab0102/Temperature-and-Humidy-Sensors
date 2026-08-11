@@ -4,7 +4,7 @@ from matplotlib.animation import FuncAnimation
 import pandas as pd
 
 fig, ax = plt.subplots()
-graph = ax.plot([],[],color = 'g')
+graph, = ax.plot([],[],color = 'g')
 plt.ylim(0,30)
 x = [1]
 
