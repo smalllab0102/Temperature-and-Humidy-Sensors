@@ -5,6 +5,8 @@ def keep_lines(file,max_lines = 50):
         first_line = f.readline()
         rest_of_lines = f.readlines()
         total_lines = len(rest_of_lines + 1)
+        f.seek(0)
+        first_line = f.readline()
     
     if total_line < max_lines:
         kept_lines = deque(file, maxlen = max_lines-1)
