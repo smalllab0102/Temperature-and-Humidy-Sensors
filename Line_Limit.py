@@ -17,5 +17,6 @@ def keep_lines(file,max_lines = 1500000):
             f.writelines(kept_lines)
 
 while True:
+    print("Watching for max lines")
     keep_lines("modbus_log.csv", max_lines = 1500000)
     time.sleep(86400)
