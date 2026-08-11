@@ -19,5 +19,5 @@ def update(frame):
     graph.set_ydata(y)
     plt.xlim(x[0], x[-1])
 
-anim = FuncAnimation(fig, update, interval=1000, cache_frame_data=False)
+anim = FuncAnimation(fig, update, interval=1000)
 plt.show()
