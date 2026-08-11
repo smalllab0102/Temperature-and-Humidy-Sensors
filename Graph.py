@@ -1,6 +1,7 @@
-import matplotlib.pyplot as plot 
+import matplotlib.pyplot as plt 
 import random
 from matplotlib.animation import FuncAnimation
+import pandas as pd
 
 fig, ax = plt.subplots()
 graph = ax.plot(x,y,color = 'g')[0]
@@ -10,14 +11,13 @@ x = [1]
 def update(frame):
     global graph
 
-    x.append(x[-1] + 1)
-
     data = pd.read_csv('modbus_log.csv')
-        y = data['Temp C']
+    y = data['Temp C']
+    x = list(range(1, len(y) + 1))
     # creating a new graph or updating the graph
     graph.set_xdata(x)
     graph.set_ydata(y)
     plt.xlim(x[0], x[-1])
 
-anim = FuncAnimation(fig, update, frames = None)
+anim = FuncAnimation(fig, update, interval=1000, cache_frame_data=False)
 plt.show()
