@@ -1,4 +1,4 @@
-from collection import deque
+from collections import deque
 
 def keep_lines(file,max_lines = 1500000):
     with open(file_dir, "r") as file:
