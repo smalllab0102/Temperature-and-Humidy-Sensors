@@ -5,7 +5,7 @@ from datetime import datetime
 from pymodbus.client import ModbusTcpClient
 
 # --- CONFIGURATION ---
-SERVER_IP = "192.168.2.3"  # <-- DOUBLE-CHECK THIS IP MATCHES YOUR DEVICE
+SERVER_IP = "192.168.2.3"  
 SERVER_PORT = 502
 UNIT_ID = 1
 LOG_FILE = "modbus_log.csv"
@@ -94,15 +94,12 @@ def main():
                 log_data(client)
             else:
                 print("Device unreachable. Retrying in 5 seconds...")
-                # Log an all-NaN row to preserve time continuity if desired,
-                # or quietly wait. Here we just wait:
                 
             time.sleep(5)
             
     except KeyboardInterrupt:
         print("\nStopping logging script...")
     finally:
-        # This will now always execute safely without UnboundLocalError
         if client:
             client.close()
             print("Connection closed safely.")
