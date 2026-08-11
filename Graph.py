@@ -17,7 +17,7 @@ def update(frame):
     # creating a new graph or updating the graph
     graph.set_xdata(x)
     graph.set_ydata(y)
-    plt.xlim(x[0], x[-1])
+    ax.set_xlim(x[0], x[-1])
 
 anim = FuncAnimation(fig, update, interval=1000)
 plt.show()
