@@ -1,6 +1,7 @@
 from collections import deque
+import time
 
-def keep_lines(file,max_lines = 50):
+def keep_lines(file,max_lines = 1500000):
     with open(file, "r") as f:
         first_line = f.readline()
         rest_of_lines = f.readlines()
@@ -15,4 +16,6 @@ def keep_lines(file,max_lines = 50):
             f.write(first_line)
             f.writelines(kept_lines)
 
-keep_lines("modbus_log.csv", max_lines = 50)
+while True:
+    keep_lines("modbus_log.csv", max_lines = 1500000)
+    time.sleep(86400)
