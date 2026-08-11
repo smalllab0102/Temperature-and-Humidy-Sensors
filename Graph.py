@@ -4,7 +4,7 @@ from matplotlib.animation import FuncAnimation
 import pandas as pd
 
 fig, ax = plt.subplots()
-graph = ax.plot(x,y,color = 'g')[0]
+graph = ax.plot([],[],color = 'g')
 plt.ylim(0,30)
 x = [1]
 
@@ -17,7 +17,8 @@ def update(frame):
     # creating a new graph or updating the graph
     graph.set_xdata(x)
     graph.set_ydata(y)
-    ax.set_xlim(x[0], x[-1])
+    ax.relim()
+    ax.autoscale_view()
 
 anim = FuncAnimation(fig, update, interval=1000)
 plt.show()
