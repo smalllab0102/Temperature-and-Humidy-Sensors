@@ -20,6 +20,9 @@ def update(frame):
     ax.relim()
     ax.autoscale_view()
     fig.canvas.draw_idle()
+    plt.title("Temperature(celsius) vs Time")
+    plt.xlabel("Time")
+    plt.ylabel("Temperature")
     return graph,
 
 anim = FuncAnimation(fig, update, interval=1000)
