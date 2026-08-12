@@ -1,22 +1,32 @@
-from collections import deque
+import os
+import tempfile
 import time
 
-def keep_lines(file,max_lines = 2700000):
-    with open(file, "r") as f:
-        first_line = f.readline()
-        rest_of_lines = f.readlines()
-        total_lines = len(rest_of_lines) + 1
-        f.seek(0)
-        first_line = f.readline()
-    
-    if total_lines > max_lines:
-        kept_lines = deque(file, maxlen = max_lines-1)
-
-        with open(file, "w") as f:
-            f.write(first_line)
-            f.writelines(kept_lines)
+file = 'modbus_log.csv'
+max_size = 95000000
 
 while True:
-    print("Watching for max lines")
-    keep_lines("modbus_log.csv", max_lines = 2700000)
-    time.sleep(86400)
+    #checks if file is over max file size
+    if os.path.getsize(file) > max_size:
+        with open(file, 'r') as f:
+            lines = f.readlines()
+            first_line = lines[1].strip()
+            oldest_date = first_line[:10]
+            
+            #finds lines we want to keep
+            new_line = 0
+            for i, line in enumerate(lines):
+                if i==0:
+                    continue
+                if not line.startswith(oldest_date):
+                    new_line = i
+                    break
+            keep_lines = [lines[0]] + lines[new_line:]
+
+            #makes a temporary file to write the new lines to and then makes that our new file
+            dir_name = os.path.dirname(os.path.abspath(file))
+            with tempfile.NamedTemporaryFile("w", dir=dir_name, delete=False, encoding="utf-8") as temp_file:
+                temp_file.writelines(keep_lines)
+                temp_name = temp_file.name
+            os.replace(temp_name, file)
+    time.sleep(60)
