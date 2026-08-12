@@ -12,6 +12,13 @@ ax1.set_ylim(0,30)
 ax2.set_ylim(0,100)
 x = [1]
 
+ax1.set_title("Temperature vs Time")
+ax2.set_title("Humidity vs Time")
+ax1.set_xlabel("Time")
+ax2.set_xlabel("Time")
+ax1.set_ylabel("Temperature (celsius)")
+ax2.set_ylabel("Humidity")
+
 def update(frame):
     global graph
 
@@ -25,12 +32,6 @@ def update(frame):
         ax.relim()
         ax.autoscale_view()
     fig.canvas.draw_idle()
-    ax1.set_title("Temperature vs Time")
-    ax2.set_title("Humidity vs Time")
-    ax1.set_xlabel("Time")
-    ax2.set_xlabel("Time")
-    ax1.set_ylabel("Temperature (celsius)")
-    ax2.set_ylabel("Humidity")
     return graph,
 
 
