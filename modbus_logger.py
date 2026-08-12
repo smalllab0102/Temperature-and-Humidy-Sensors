@@ -23,7 +23,7 @@ def initialize_csv():
         print(f"Created new log file: {LOG_FILE}")
 
 def read_modbus_block(client, start_address, count):
-    """Safely reads a sequential block of Modbus registers."""
+    """reads a sequential block of Modbus registers."""
     try:
         response = client.read_holding_registers(
             address=start_address, count=count, slave=UNIT_ID
@@ -70,7 +70,7 @@ def log_data(client):
 def main():
     initialize_csv()
     
-    # Safely create the client object first so it always exists
+    # create the client object first so it always exists
     client = ModbusTcpClient(SERVER_IP, port=SERVER_PORT)
     
     print(f"Connecting to {SERVER_IP}:{SERVER_PORT} and logging data...")
