@@ -87,7 +87,7 @@ def main():
             else:
                 print("Device unreachable. Retrying in 5 seconds...")
                 
-            time.sleep(5)
+            time.sleep(10)
             
     except KeyboardInterrupt:
         print("\nStopping logging script...")
