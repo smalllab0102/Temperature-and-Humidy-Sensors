@@ -42,7 +42,6 @@ def update(frame):
         graphs.set_xdata(x)
         graphs.set_ydata(ydata)
         ax.set_xlim(mdates.date2num(graph_start), mdates.date2num(time_now))
-        ax.set_xlim(graph_start, time_now)
         ax.relim()
         ax.autoscale_view(scalex=False, scaley=True)
     fig.canvas.draw_idle()
