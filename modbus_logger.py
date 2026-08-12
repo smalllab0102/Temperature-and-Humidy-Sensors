@@ -65,7 +65,7 @@ def log_data(client):
         writer = csv.writer(file)
         writer.writerow(row)
         
-    print(f"[{timestamp}] Data logged. Success states: B1={block1 is not None}, B2={block2 is not None}, B3={block3 is not None}")
+    print(f"[{timestamp}] Data logged. Success states: B1={block1 is not None}, B2={block2 is not None}")
 
 def main():
     initialize_csv()
