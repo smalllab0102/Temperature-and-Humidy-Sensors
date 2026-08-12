@@ -47,3 +47,7 @@ def update(frame):
 
 anim = FuncAnimation(fig, update, interval=1000)
 plt.show()
+
+while True:
+    plt.savefig("Temp and Humidity Graph")
+    rest(3600)
