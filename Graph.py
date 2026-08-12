@@ -55,3 +55,4 @@ def update(frame):
 anim = FuncAnimation(fig, update, interval=1000)
 plt.show()
 
+print("Graphing")
