@@ -2,8 +2,6 @@ import matplotlib.pyplot as plt
 import random
 from matplotlib.animation import FuncAnimation
 import pandas as pd
-import datetime as dt
-import matplotlib.dates as mdates
 
 fig, (ax1, ax2) = plt.subplots(2,1, figsize=(8, 7))
 graph1, = ax1.plot([],[],color = 'b')
@@ -27,23 +25,14 @@ def update(frame):
     global graph
 
     data = pd.read_csv('modbus_log.csv')
-    data['DateTimeString'] = pd.to_datetime(data['Timestamp']) 
-    time_now = data['DateTimeString'].max()
-    yesterday = time_now - dt.timedelta(days=1)
-    earliest_available = data['DateTimeString'].min()
-    graph_start = max(yesterday, earliest_available)
-    one_day = data[data['DateTimeString'] >= yesterday]
-
-    x = mdates.date2num(one_day['DateTimeString'].dt.to_pydatetime())
-    y = [one_day['Temp C'].values, one_day['Humidity'].values]
-
+    y = [data['Temp C'],data['Humidity']]
+    x = list(range(1, len(data) + 1))
     # creating a new graph or updating the graph
     for ax, graphs, ydata in zip(axes, graph, y):
         graphs.set_xdata(x)
         graphs.set_ydata(ydata)
-        ax.set_xlim(mdates.date2num(graph_start), mdates.date2num(time_now))
         ax.relim()
-        ax.autoscale_view(scalex=False, scaley=True)
+        ax.autoscale_view()
     fig.canvas.draw_idle()
     return graph,
 
