@@ -4,6 +4,7 @@ import time
 
 file = 'modbus_log.csv'
 max_size = 35242
+print('Checking for Max Size')
 
 while True:
     #checks if file is over max file size
