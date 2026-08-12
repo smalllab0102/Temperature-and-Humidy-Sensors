@@ -33,5 +33,6 @@ def update(frame):
     ax2.set_ylabel("Humidity")
     return graph,
 
+plt.tight_layout()
 anim = FuncAnimation(fig, update, interval=1000)
 plt.show()
