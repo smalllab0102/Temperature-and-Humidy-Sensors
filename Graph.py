@@ -25,6 +25,14 @@ def update(frame):
     global graph
 
     data = pd.read_csv('modbus_log.csv')
+    data['DateTimeString'] = pd.to_datetime(data['Timestamp']) 
+    time_now = data['DateTimeString'].max()
+    yesterday = latest_time - dt.timedelta(days=1)
+    one_day = data[data['DateTimeString'] >= yesterday]
+
+    x_timestamps = one_day['DateTimeString']
+    y = [one_day['Temp C'], one_day['Humidity']]
+
     y = [data['Temp C'],data['Humidity']]
     x = list(range(1, len(data) + 1))
     # creating a new graph or updating the graph
