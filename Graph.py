@@ -45,7 +45,7 @@ def update(frame):
     counter += 1
     if counter >= 10
         plt.savefig("Temp and Humidity Graph.png")
-        conter = 0
+        counter = 0
     return graph,
 
 
