@@ -15,7 +15,7 @@ def update(frame):
     global graph
 
     data = pd.read_csv('modbus_log.csv')
-    y = data[['Temp C','Humidity']]
+    y = [data['Temp C'],data['Humidity']]
     x = list(range(1, len(data) + 1))
     # creating a new graph or updating the graph
     for ax, graphs, ydata in zip(axes, graph, y):
@@ -24,10 +24,10 @@ def update(frame):
         ax.relim()
         ax.autoscale_view()
     fig.canvas.draw_idle()
-    ax1.title("Temperature vs Time")
-    ax2.title("Humidity vs Time")
-    ax1.xlabel("Time")
-    ax2.xlabel("Time")
+    ax1.set_title("Temperature vs Time")
+    ax2.set_title("Humidity vs Time")
+    ax1.set_xlabel("Time")
+    ax2.set_xlabel("Time")
     ax1.set_ylabel("Temperature (celsius)")
     ax2.set_ylabel("Humidity")
     return graph,
