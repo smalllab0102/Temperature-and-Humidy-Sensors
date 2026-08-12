@@ -11,8 +11,7 @@ UNIT_ID = 1
 LOG_FILE = "modbus_log.csv"
 
 HEADERS = [
-    "Timestamp", "Temp F", "Temp C", "Humidity", 
-    "Year", "Month", "Day", "Day of Week", "Hour", "Minute", "Second"
+    "Timestamp", "Temp F", "Temp C", "Humidity"
 ]
 
 def initialize_csv():
@@ -42,7 +41,6 @@ def log_data(client):
     # Read data blocks from device
     block1 = read_modbus_block(client, 100, 2)
     block2 = read_modbus_block(client, 304, 1)
-    block3 = read_modbus_block(client, 1239, 7)
 
     # Start building row data
     row = [timestamp]
@@ -61,12 +59,6 @@ def log_data(client):
         row.extend([val_304])
     else:
         row.extend(["NaN"])
-
-    # Process addresses 1239-1245 (Keep as raw integers)
-    if block3 and len(block3) >= 7:
-        row.extend(block3)
-    else:
-        row.extend(["NaN"] * 7)
 
     # Append data to file
     with open(LOG_FILE, mode="a", newline="") as file:
