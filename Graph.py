@@ -12,6 +12,7 @@ axes = [ax1, ax2]
 ax1.set_ylim(0,30)
 ax2.set_ylim(0,100)
 x = [1]
+counter = 0
 
 ax1.set_title("Temperature vs Time")
 ax2.set_title("Humidity vs Time")
