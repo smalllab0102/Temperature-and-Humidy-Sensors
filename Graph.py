@@ -31,15 +31,16 @@ def update(frame):
     yesterday = time_now - dt.timedelta(days=1)
     one_day = data[data['DateTimeString'] >= yesterday]
 
-    x_timestamps = one_day['DateTimeString']
+    x = one_day['DateTimeString']
     y = [one_day['Temp C'], one_day['Humidity']]
 
     # creating a new graph or updating the graph
     for ax, graphs, ydata in zip(axes, graph, y):
         graphs.set_xdata(x)
         graphs.set_ydata(ydata)
+        ax.set_xlim(yesterday, time_now)
         ax.relim()
-        ax.autoscale_view()
+        ax.autoscale_view(scalex=False, scaley=True)
     fig.canvas.draw_idle()
     return graph,
 
