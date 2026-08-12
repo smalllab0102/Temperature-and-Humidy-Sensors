@@ -33,9 +33,9 @@ def update(frame):
     graph_start = max(yesterday, earliest_available)
     one_day = data[data['DateTimeString'] >= yesterday]
 
-    x = one_day['DateTimeString']
-    y = [one_day['Temp C'], one_day['Humidity']]
-
+    x = mdates.date2num(one_day['DateTimeString'].dt.to_pydatetime())
+    y = [one_day['Temp C'].values, one_day['Humidity'].values]
+    
     # creating a new graph or updating the graph
     for ax, graphs, ydata in zip(axes, graph, y):
         graphs.set_xdata(x)
