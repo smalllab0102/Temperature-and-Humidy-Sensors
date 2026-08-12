@@ -49,6 +49,8 @@ def update(frame):
     fig.canvas.draw_idle()
     counter += 1
     if counter >= 10:
+        for ax in axes:
+            ax.set_xlim(x.min(), x.max())
         plt.savefig("Temp and Humidity Graph.png")
         counter = 0
     return graph,
