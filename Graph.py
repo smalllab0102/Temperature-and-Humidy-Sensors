@@ -2,6 +2,7 @@ import matplotlib.pyplot as plt
 import random
 from matplotlib.animation import FuncAnimation
 import pandas as pd
+import datetime as dt
 
 fig, (ax1, ax2) = plt.subplots(2,1, figsize=(8, 7))
 graph1, = ax1.plot([],[],color = 'b')
@@ -27,14 +28,12 @@ def update(frame):
     data = pd.read_csv('modbus_log.csv')
     data['DateTimeString'] = pd.to_datetime(data['Timestamp']) 
     time_now = data['DateTimeString'].max()
-    yesterday = latest_time - dt.timedelta(days=1)
+    yesterday = time_now - dt.timedelta(days=1)
     one_day = data[data['DateTimeString'] >= yesterday]
 
     x_timestamps = one_day['DateTimeString']
     y = [one_day['Temp C'], one_day['Humidity']]
 
-    y = [data['Temp C'],data['Humidity']]
-    x = list(range(1, len(data) + 1))
     # creating a new graph or updating the graph
     for ax, graphs, ydata in zip(axes, graph, y):
         graphs.set_xdata(x)
