@@ -20,7 +20,7 @@ def update(frame):
     # creating a new graph or updating the graph
     for ax, graphs, ydata in zip(axes, graph, y):
         graphs.set_xdata(x)
-        graphs.set_ydata(y)
+        graphs.set_ydata(ydata)
         ax.relim()
         ax.autoscale_view()
     fig.canvas.draw_idle()
