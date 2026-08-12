@@ -24,9 +24,6 @@ while True:
             keep_lines = [lines[0]] + lines[new_line:]
 
             #makes a temporary file to write the new lines to and then makes that our new file
-            dir_name = os.path.dirname(os.path.abspath(file))
-            with tempfile.NamedTemporaryFile("w", dir=dir_name, delete=False, encoding="utf-8") as temp_file:
-                temp_file.writelines(keep_lines)
-                temp_name = temp_file.name
-            os.replace(temp_name, file)
+            with open(file, 'w', newline='') as f:
+                f.writelines(keep_lines)
     time.sleep(60)
