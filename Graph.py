@@ -42,12 +42,13 @@ def update(frame):
         ax.relim()
         ax.autoscale_view()
     fig.canvas.draw_idle()
+    counter += 1
+    if counter >= 3600:
+        plt.savefig("Temp and Humidity Graph.png")
+        counter = 0 
     return graph,
 
 
 anim = FuncAnimation(fig, update, interval=1000)
 plt.show()
 
-while True:
-    plt.savefig("Temp and Humidity Graph")
-    rest(3600)
