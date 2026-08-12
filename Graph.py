@@ -14,6 +14,8 @@ ax2.set_ylim(0,100)
 x = [1]
 counter = 0
 
+print('Graphing')
+
 ax1.set_title("Temperature vs Time")
 ax2.set_title("Humidity vs Time")
 ax1.set_xlabel("Time")
@@ -55,4 +57,4 @@ def update(frame):
 anim = FuncAnimation(fig, update, interval=1000)
 plt.show()
 
-print("Graphing")
+
