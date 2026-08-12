@@ -40,7 +40,8 @@ def update(frame):
     for ax, graphs, ydata in zip(axes, graph, y):
         graphs.set_xdata(x)
         graphs.set_ydata(ydata)
-        ax.set_xlim(x.min(), x.max())
+        if fig.canvas.toolbar.mode == "":
+            ax.set_xlim(x.min(), x.max())
         ax.relim()
         ax.autoscale_view()
     fig.canvas.draw_idle()
