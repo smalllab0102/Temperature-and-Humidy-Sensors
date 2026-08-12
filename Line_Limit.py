@@ -3,7 +3,7 @@ import tempfile
 import time
 
 file = 'modbus_log.csv'
-max_size = 34473
+max_size = 9500000
 print('Checking for Max Size')
 
 while True:
