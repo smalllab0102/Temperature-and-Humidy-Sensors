@@ -8,7 +8,8 @@ graph1, = ax1.plot([],[],color = 'b')
 graph2, = ax2.plot([],[],color = 'b')
 graph = [graph1,graph2]
 axes = [ax1, ax2]
-plt.ylim(0,30)
+ax1.set_ylim(0,30)
+ax2.set_ylim(0,100)
 x = [1]
 
 def update(frame):
