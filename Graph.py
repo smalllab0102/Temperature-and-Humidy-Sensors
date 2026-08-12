@@ -45,7 +45,6 @@ def update(frame):
         ax.autoscale_view()
     fig.canvas.draw_idle()
     counter += 1
-    print(counter)
     if counter >= 10:
         plt.savefig("Temp and Humidity Graph.png")
         counter = 0
