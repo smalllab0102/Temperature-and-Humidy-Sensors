@@ -29,6 +29,8 @@ def update(frame):
     data['DateTimeString'] = pd.to_datetime(data['Timestamp']) 
     time_now = data['DateTimeString'].max()
     yesterday = time_now - dt.timedelta(days=1)
+    earliest_available = data['DateTimeString'].min()
+    graph_start = max(yesterday, earliest_available)
     one_day = data[data['DateTimeString'] >= yesterday]
 
     x = one_day['DateTimeString']
@@ -38,7 +40,7 @@ def update(frame):
     for ax, graphs, ydata in zip(axes, graph, y):
         graphs.set_xdata(x)
         graphs.set_ydata(ydata)
-        ax.set_xlim(yesterday, time_now)
+        ax.set_xlim(graph_start, time_now)
         ax.relim()
         ax.autoscale_view(scalex=False, scaley=True)
     fig.canvas.draw_idle()
