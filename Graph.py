@@ -19,6 +19,8 @@ ax2.set_xlabel("Time")
 ax1.set_ylabel("Temperature (celsius)")
 ax2.set_ylabel("Humidity")
 
+fig.subplots_adjust(hspace=0.5, bottom=0.1, top=0.9, left=0.15, right=0.95)
+
 def update(frame):
     global graph
 
