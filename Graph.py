@@ -3,6 +3,7 @@ import random
 from matplotlib.animation import FuncAnimation
 import pandas as pd
 import datetime as dt
+import matplotlib.dates as mdates
 
 fig, (ax1, ax2) = plt.subplots(2,1, figsize=(8, 7))
 graph1, = ax1.plot([],[],color = 'b')
@@ -35,11 +36,12 @@ def update(frame):
 
     x = mdates.date2num(one_day['DateTimeString'].dt.to_pydatetime())
     y = [one_day['Temp C'].values, one_day['Humidity'].values]
-    
+
     # creating a new graph or updating the graph
     for ax, graphs, ydata in zip(axes, graph, y):
         graphs.set_xdata(x)
         graphs.set_ydata(ydata)
+        ax.set_xlim(mdates.date2num(graph_start), mdates.date2num(time_now))
         ax.set_xlim(graph_start, time_now)
         ax.relim()
         ax.autoscale_view(scalex=False, scaley=True)
