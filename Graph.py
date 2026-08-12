@@ -3,7 +3,7 @@ import random
 from matplotlib.animation import FuncAnimation
 import pandas as pd
 
-fig, (ax1, ax2) = plt.subplots(2,1)
+fig, (ax1, ax2) = plt.subplots(2,1, figsize=(8, 7))
 graph1, = ax1.plot([],[],color = 'b')
 graph2, = ax2.plot([],[],color = 'b')
 graph = [graph1,graph2]
