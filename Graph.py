@@ -23,8 +23,7 @@ ax2.set_xlabel("Time")
 ax1.set_ylabel("Temperature (celsius)")
 ax2.set_ylabel("Humidity")
 for ax in axes:
-    ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
-    plt.setp(ax.get_xticklabels(), rotation=45, ha='right') 
+    ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M'))
 
 fig.subplots_adjust(hspace=0.5, bottom=0.1, top=0.9, left=0.15, right=0.95)
 
