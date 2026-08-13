@@ -24,6 +24,7 @@ ax1.set_ylabel("Temperature (celsius)")
 ax2.set_ylabel("Humidity")
 for ax in axes:
     ax.xaxis.set_major_formatter(mdates.DateFormatter('%H:%M:%S'))
+    plt.setp(ax.get_xticklabels(), rotation=45, ha='right') 
 
 fig.subplots_adjust(hspace=0.5, bottom=0.1, top=0.9, left=0.15, right=0.95)
 
@@ -51,7 +52,6 @@ def update(frame):
     if counter >= 10:
         for ax in axes:
             ax.set_xlim(x.min(), x.max())
-            plt.setp(ax.get_xticklabels(), rotation=45, ha='right') 
         plt.savefig("Temp and Humidity Graph.png")
         counter = 0
     return graph,
