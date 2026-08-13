@@ -33,11 +33,11 @@ def update(frame):
 
     data = pd.read_csv('modbus_log.csv')
     data['Timestamp'] = pd.to_datetime(data['Timestamp'])
-    y = [data['Temp C'],data['Humidity']]
     latest_time = data['Timestamp'].max()
     cutoff_time = latest_time - pd.Timedelta(hours=24)
     data = data[data['Timestamp'] >= cutoff_time]
     x = data['Timestamp']
+    y = [data['Temp C'],data['Humidity']]
     # creating a new graph or updating the graph
     for ax, graphs, ydata in zip(axes, graph, y):
         graphs.set_xdata(x)
