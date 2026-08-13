@@ -51,6 +51,7 @@ def update(frame):
     if counter >= 10:
         for ax in axes:
             ax.set_xlim(x.min(), x.max())
+            plt.setp(ax.get_xticklabels(), rotation=45, ha='right') 
         plt.savefig("Temp and Humidity Graph.png")
         counter = 0
     return graph,
